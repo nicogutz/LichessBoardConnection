@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BluetoothButton } from './BluetoothButton'
+import { BluetoothButton } from './utils/BluetoothButton'
 import { Magnet } from './utils/Magnet';
 
 function App() {
