@@ -1,14 +1,14 @@
 const { Chess } = require('chess.js')
 
 const DIRECTIONS = {
-  N: '008',
-  S: '009',
-  W: '00A',
-  E: '00B',
-  NW: '00C',
-  NE: '00D',
-  SW: '00E',
-  SE: '00F',
+  N: 'MVNO',
+  S: 'MVSO',
+  W: 'MVWE',
+  E: 'MVEA',
+  NW: 'MVNW',
+  NE: 'MNNE',
+  SW: 'MNSW',
+  SE: 'MNSE',
 }
 
 export class Magnet {
@@ -17,7 +17,7 @@ export class Magnet {
       x: 0,
       y: 0,
     }
-    this._instructions = ['0100']
+    this._instructions = ['MG0']
     this._isOn = false
     this._chess = new Chess()
   }
@@ -36,7 +36,7 @@ export class Magnet {
   }
 
   resetInstructions() {
-    this._instructions = ['0100']
+    this._instructions = ['MG0']
   }
 
   makeMove(notation) {
@@ -235,15 +235,15 @@ export class Magnet {
   }
 
   turnOn() {
-    this._instructions.push('0140')
+    this._instructions.push('MG1')
   }
 
   turnOff() {
-    this._instructions.push('0100')
+    this._instructions.push('MG0')
   }
 
   goHome() {
-    this._instructions.push('0180')
+    this._instructions.push('HM')
     this._position = {
       x: 0,
       y: 0,
