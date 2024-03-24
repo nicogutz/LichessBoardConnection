@@ -16,7 +16,8 @@ function Play() {
     const [isUsersTurn, setIsUsersTurn] = useState(false)
     const [magnet] = useState(new Magnet())
     const title = 'Dashboard';
-
+    console.log(process.env.PUBLIC_URL);
+    
     return (
         <>
             <Helmet>

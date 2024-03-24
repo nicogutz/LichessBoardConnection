@@ -3,17 +3,31 @@ import { Helmet } from "react-helmet";
 import ChassNavbar from "../components/Navbar";
 import { getCtrl } from "../lichess/ctrl";
 import useQuery from "../utils/Query";
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Landing() {
     let query = useQuery();
     const ctrl = getCtrl()
-    ctrl.auth.init();
-    console.log(ctrl.auth.me)
+    const navigate = useNavigate();
+    const [redirectToPlay, setRedirectToPlay] = useState(false);
+
+    useEffect(() => {
+        ctrl.auth.init().then(() => {
+            if (ctrl.auth.me) {
+                setRedirectToPlay(true);
+            }
+        });
+    }, [ctrl.auth]);
+
     if(query.get("code")?.includes("liu_")){
         window.history.pushState({}, '', process.env.PUBLIC_URL || '/');
-        redirect('/play');
     }
+
+    if (redirectToPlay) {
+        navigate("LichessBoardConnection/play");
+    }
+
     return (
         <>
             <Helmet>
