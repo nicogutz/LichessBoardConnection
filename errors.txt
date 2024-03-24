@@ -1,0 +1,302 @@
+Access to fetch at 'https://lichess.org/api/stream/event' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+auth.ts:78 
+        
+        
+       GET https://lichess.org/api/stream/event net::ERR_FAILED 429 (Too Many Requests)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ index.js:360
+Auth.fetchResponse @ auth.ts:78
+Auth.openStream @ auth.ts:67
+Ctrl.openHome @ ctrl.ts:27
+await in Ctrl.openHome (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 13 more frames
+Show less
+index.js:369 
+        
+        
+       
+        
+       Uncaught (in promise) TypeError: Failed to fetch
+    at index.js:369:1
+    at async Auth.fetchResponse (auth.ts:78:1)
+    at async Auth.openStream (auth.ts:67:1)
+    at async Ctrl.openHome (ctrl.ts:27:1)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 12 more frames
+Show less
+LichessBoardConnection:1 Access to fetch at 'https://lichess.org/api/stream/event' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+auth.ts:78 
+        
+        
+       GET https://lichess.org/api/stream/event net::ERR_FAILED 429 (Too Many Requests)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ index.js:360
+Auth.fetchResponse @ auth.ts:78
+Auth.openStream @ auth.ts:67
+Ctrl.openHome @ ctrl.ts:27
+await in Ctrl.openHome (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+invokePassiveEffectMountInDEV @ react-dom.development.js:25154
+invokeEffectsInDev @ react-dom.development.js:27351
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27330
+flushPassiveEffectsImpl @ react-dom.development.js:27056
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 12 more frames
+Show less
+LichessBoardConnection:1 Access to fetch at 'https://lichess.org/api/stream/event' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+auth.ts:78 
+        
+        
+       GET https://lichess.org/api/stream/event net::ERR_FAILED 429 (Too Many Requests)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ index.js:360
+Auth.fetchResponse @ auth.ts:78
+Auth.openStream @ auth.ts:67
+Ctrl.openHome @ ctrl.ts:27
+await in Ctrl.openHome (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 13 more frames
+Show less
+index.js:369 
+        
+        
+       
+        
+       Uncaught (in promise) TypeError: Failed to fetch
+    at index.js:369:1
+    at async Auth.fetchResponse (auth.ts:78:1)
+    at async Auth.openStream (auth.ts:67:1)
+    at async Ctrl.openHome (ctrl.ts:27:1)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+invokePassiveEffectMountInDEV @ react-dom.development.js:25154
+invokeEffectsInDev @ react-dom.development.js:27351
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27330
+flushPassiveEffectsImpl @ react-dom.development.js:27056
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 11 more frames
+Show less
+index.js:369 
+        
+        
+       
+        
+       Uncaught (in promise) TypeError: Failed to fetch
+    at index.js:369:1
+    at async Auth.fetchResponse (auth.ts:78:1)
+    at async Auth.openStream (auth.ts:67:1)
+    at async Ctrl.openHome (ctrl.ts:27:1)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 12 more frames
+Show less
+ndJsonStream.ts:19 STREAM /api/stream/event {type: 'gameStart', game: {…}}
+ndJsonStream.ts:19 STREAM /api/stream/event {type: 'gameStart', game: {…}}
+LichessBoardConnection:1 Access to fetch at 'https://lichess.org/api/stream/event' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+auth.ts:78 
+        
+        
+       GET https://lichess.org/api/stream/event net::ERR_FAILED 429 (Too Many Requests)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ index.js:360
+Auth.fetchResponse @ auth.ts:78
+Auth.openStream @ auth.ts:67
+Ctrl.openHome @ ctrl.ts:27
+await in Ctrl.openHome (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 13 more frames
+Show less
+index.js:369 
+        
+        
+       
+        
+       Uncaught (in promise) TypeError: Failed to fetch
+    at index.js:369:1
+    at async Auth.fetchResponse (auth.ts:78:1)
+    at async Auth.openStream (auth.ts:67:1)
+    at async Ctrl.openHome (ctrl.ts:27:1)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+commitPassiveMountOnFiber @ react-dom.development.js:24926
+commitPassiveMountEffects_complete @ react-dom.development.js:24891
+commitPassiveMountEffects_begin @ react-dom.development.js:24878
+commitPassiveMountEffects @ react-dom.development.js:24866
+flushPassiveEffectsImpl @ react-dom.development.js:27039
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 12 more frames
+Show less
+LichessBoardConnection:1 Access to fetch at 'https://lichess.org/api/stream/event' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+auth.ts:78 
+        
+        
+       GET https://lichess.org/api/stream/event net::ERR_FAILED 429 (Too Many Requests)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ index.js:360
+Auth.fetchResponse @ auth.ts:78
+Auth.openStream @ auth.ts:67
+Ctrl.openHome @ ctrl.ts:27
+await in Ctrl.openHome (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+invokePassiveEffectMountInDEV @ react-dom.development.js:25154
+invokeEffectsInDev @ react-dom.development.js:27351
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27330
+flushPassiveEffectsImpl @ react-dom.development.js:27056
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 12 more frames
+Show less
+index.js:369 
+        
+        
+       
+        
+       Uncaught (in promise) TypeError: Failed to fetch
+    at index.js:369:1
+    at async Auth.fetchResponse (auth.ts:78:1)
+    at async Auth.openStream (auth.ts:67:1)
+    at async Ctrl.openHome (ctrl.ts:27:1)
+(anonymous) @ index.js:369
+Promise.then (async)
+(anonymous) @ Landing.tsx:16
+Promise.then (async)
+(anonymous) @ Landing.tsx:14
+commitHookEffectListMount @ react-dom.development.js:23150
+invokePassiveEffectMountInDEV @ react-dom.development.js:25154
+invokeEffectsInDev @ react-dom.development.js:27351
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27330
+flushPassiveEffectsImpl @ react-dom.development.js:27056
+flushPassiveEffects @ react-dom.development.js:26984
+(anonymous) @ react-dom.development.js:26769
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+Show 11 more frames
+Show less
+WebSocketClient.js:13 WebSocket connection to 'ws://localhost:3000/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+Show 3 more frames
+Show less
+WebSocketClient.js:13 WebSocket connection to 'ws://localhost:3000/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+Show 3 more frames
+Show less
+WebSocketClient.js:13 WebSocket connection to 'ws://localhost:3000/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+Show 3 more frames
+Show less
+WebSocketClient.js:13 WebSocket connection to 'ws://localhost:3000/ws' failed: 
+WebSocketClient @ WebSocketClient.js:13
+initSocket @ socket.js:27
+(anonymous) @ socket.js:51
+Show 3 more frames
+Show less

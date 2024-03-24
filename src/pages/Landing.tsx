@@ -1,5 +1,4 @@
 import { title } from "process";
-import { Helmet } from "react-helmet";
 import ChassNavbar from "../components/Navbar";
 import { getCtrl } from "../lichess/ctrl";
 import useQuery from "../utils/Query";
@@ -26,9 +25,6 @@ function Landing() {
 
     return (
         <>
-            <Helmet>
-                <title>{title}</title>
-            </Helmet>
             <main className="container-fluid">
                 <ChassNavbar username={undefined}></ChassNavbar>
                 <div className="px-4 py-5 my-5 text-center">

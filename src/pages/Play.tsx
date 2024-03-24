@@ -5,7 +5,6 @@ import { MakeMove } from "../components/MakeMove";
 import { StreamGame } from "../components/StreamGame";
 import { Ctrl, getCtrl } from "../lichess/ctrl";
 import { Magnet } from "../utils/Magnet";
-import { Helmet } from "react-helmet";
 import ChassNavbar from "../components/Navbar";
 import renderGames from "../components/Games";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +28,6 @@ function Play() {
 
     return (
         <>
-            <Helmet>
-                <title>{title}</title>
-            </Helmet>
             <main className="container-fluid">
                 <ChassNavbar username={undefined}></ChassNavbar>
                 <div className="px-4 py-5 my-5 text-center">
