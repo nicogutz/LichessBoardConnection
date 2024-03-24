@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { getCtrl } from "../lichess/ctrl";
 
 export const CreateGame = ({ setGameId }) => {
+  const ctrl = getCtrl();
+
   const [gameConfig, setGameConfig] = useState({
     level: 1,
     clock_limit: 300,
@@ -17,7 +20,10 @@ export const CreateGame = ({ setGameId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    ctrl.playAi(gameConfig.clock_increment.level, gameConfig.clock_limit, gameConfig.clock_increment, gameConfig.color)
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>

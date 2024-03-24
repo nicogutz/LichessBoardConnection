@@ -44,16 +44,22 @@ export class Ctrl {
     this.game = await GameCtrl.open(this, id);
   };
 
-  playAi = async () => {
+  playAi = async (level: number, clockLimit: number, clockIncrement: number, color: string) => {
     this.game = undefined;
     this.page = 'game';
+  
+    // Define formData
+    const formData = {
+      level: level,
+      'clock.limit': clockLimit,
+      'clock.increment': clockIncrement,
+      color: color,
+    };
+  
+    // Fetch request with formData in the body
     await this.auth.fetchBody('/api/challenge/ai', {
       method: 'post',
-      body: formData({
-        level: 1,
-        'clock.limit': 60 * 3,
-        'clock.increment': 2,
-      }),
+      body: formData,
     });
   };
 
