@@ -10,17 +10,19 @@ function Landing() {
     let query = useQuery();
     const ctrl = getCtrl()
     const navigate = useNavigate();
-
-    ctrl.auth.init().then(() => {
-        if (ctrl.auth.me) {
-            navigate("play");
-        } else{
-            if (query.get("code")?.includes("liu_")) {
-                window.history.pushState({}, '', process.env.PUBLIC_URL || '/');
-            }        
-        }
-    })
-
+    useEffect(() => {
+        ctrl.auth.init().then(() => {
+            if (ctrl.auth.me) {
+                ctrl.openHome().then(() => {
+                    navigate("/LichessBoardConnection/play")
+                });
+            } else {
+                if (query.get("code")?.includes("liu_")) {
+                    window.history.pushState({}, '', process.env.PUBLIC_URL || '/');
+                }
+            }
+        })
+    }, []);
 
     return (
         <>
