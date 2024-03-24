@@ -44,21 +44,22 @@ export class Ctrl {
     this.game = await GameCtrl.open(this, id);
   };
 
-  playAi = async (level: number, clockLimit: number, clockIncrement: number) => {
+  playAi = async (level: number, clockLimit: number, clockIncrement: number, color: string) => {
     this.game = undefined;
     this.page = 'game';
-  
+
     // Define formData
-    const formData = {
+    const data = {
       level: level,
       'clock.limit': clockLimit,
       'clock.increment': clockIncrement,
+      color: color
     };
-  
+    
     // Fetch request with formData in the body
     await this.auth.fetchBody('/api/challenge/ai', {
       method: 'post',
-      body: formData,
+      body: formData(data),
     });
   };
 
@@ -95,6 +96,6 @@ export class Ctrl {
 
 let instance: Ctrl | null = null
 export function getCtrl() {
-  if(!instance) instance = new Ctrl();
+  if (!instance) instance = new Ctrl();
   return instance;
 }

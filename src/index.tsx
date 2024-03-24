@@ -27,7 +27,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
+    // Disable to get banned less from lichess api, sends 1 request instead of 2.
+    // <React.StrictMode> 
       <RouterProvider router={router} />
-    </React.StrictMode>
+    // </React.StrictMode>
   );
