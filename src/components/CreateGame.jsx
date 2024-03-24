@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { getCtrl } from "../lichess/ctrl";
 import { useNavigate } from "react-router-dom";
 
-export const CreateGame = ({ setGameId }) => {
+export const CreateGame = ({ setGameId, setNewGame }) => {
   const ctrl = getCtrl();
   const navigate = useNavigate();
 
@@ -27,11 +27,9 @@ export const CreateGame = ({ setGameId }) => {
       gameConfig.clock_limit,
       gameConfig.clock_increment, 
       gameConfig.color);
-    navigate("/LichessBoardConnection");
+      setNewGame(true);
   }
-
-
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <h2>Create a Game</h2>

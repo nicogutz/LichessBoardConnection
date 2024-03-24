@@ -8,11 +8,15 @@ import { Magnet } from "../utils/Magnet";
 import ChassNavbar from "../components/Navbar";
 import renderGames from "../components/Games";
 import { useNavigate } from "react-router-dom";
+import GameList from "../components/Games";
+import OngoingGames from "../lichess/ongoingGames";
 
 function Play() {
     const ctrl = getCtrl();
     const navigate = useNavigate();
     const [gameId, setGameId] = useState('');
+    const [games, setGames] = useState<OngoingGames>(ctrl.games);
+    const [newGame, setNewGame] = useState(false);
     const [isUsersTurn, setIsUsersTurn] = useState(false);
     const [magnet] = useState(new Magnet());
     const title = 'Dashboard';
@@ -25,7 +29,13 @@ function Play() {
         }, 1);
         return () => clearTimeout(timeout);
     }, []);
-
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+        setGames(ctrl.games);
+        setNewGame(false);
+        }, 1000);
+        return () => clearTimeout(timeout);
+    }, [newGame, ctrl.games])
     return (
         <>
             <main className="container-fluid">
@@ -33,10 +43,10 @@ function Play() {
                 <div className="px-4 py-5 my-5 text-center">
                     <h1 className="display-5 fw-bold">{"Wizzard Chess"}</h1>
                     <div className="col-lg-6 mx-auto">
-                        {!gameId && <CreateGame setGameId={setGameId} />}
+                        {!gameId && <CreateGame setGameId={setGameId} setNewGame={setNewGame} />}
                         {gameId && <StreamGame setIsUsersTurn={setIsUsersTurn} gameId={gameId} magnet={magnet} />}
                         {gameId && <MakeMove gameId={gameId} isUsersTurn={isUsersTurn} />}
-                        <div> {renderGames(ctrl.games)}</div>
+                        <div> {GameList(games)}</div>
                         <BluetoothButton magnet={magnet} />
                     </div>
                 </div>

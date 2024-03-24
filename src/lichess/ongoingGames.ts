@@ -9,11 +9,12 @@ export default class OngoingGames {
     this.remove(game);
     if (game.compat.board) {
       this.games.push(game);
-      if (!this.autoStart.has(game.id)) {
-        if (!game.hasMoved) page(`/game/${game.gameId}`);
-      }
+        if (!this.autoStart.has(game.id)) {
+          // if (!game.hasMoved) page(`/game/${game.gameId}`);
+        }
       this.autoStart.add(game.id);
-    } else console.log(`Skipping game ${game.gameId}, not board compatible`);
+    }
+    // } else console.log(`Skipping game ${game.gameId}, not board compatible`);
   };
 
   onFinish = (game: Game) => this.remove(game);

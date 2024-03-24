@@ -4,31 +4,9 @@ import { Game, GameWidgetProps } from '../interfaces';
 import OngoingGames from '../lichess/ongoingGames';
 import { getCtrl } from '../lichess/ctrl';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Key } from 'chessground/types';
 
-function GameWidget(game: Game) {
-  const ctrl = getCtrl();
-  const [gameID, setGameId] = useState("");
-  const [gameOpen, setGameOpen] = useState(false);
-  const [move, setMove] = useState(ctrl.game?.lastMove);
-
-
-  useEffect(() => {
-    if (gameID.length) {
-      if (!gameOpen) {
-        console.log("Setting ID to: " + gameID);
-        ctrl.openGame(gameID)
-        setGameOpen(true)
-      }
-      const interval = setInterval(() => {
-        if (ctrl.game?.lastMove !== move) {
-          setMove(ctrl.game?.lastMove);
-          console.log("Move changed to: " + ctrl.game?.lastMove);
-        }
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [ctrl.game, ctrl, ctrl.game?.lastMove, move, gameID])
-
+function GameWidget(game: Game, setGameId: React.Dispatch<React.SetStateAction<string>>) {
   return (
     <a
       className={`game-widget text-decoration-none game-widget--${game.id}`}
@@ -52,12 +30,34 @@ function GameWidget(game: Game) {
   );
 };
 
-function renderGames(ongoing: OngoingGames) {
+function GameList(ongoing: OngoingGames) {
+  const [gameOpen, setGameOpen] = useState(false);
+  const [gameID, setGameId] = useState("");
+  const [move, setMove] = useState<[Key, Key]>();
+  const ctrl = getCtrl();
+
+  useEffect(() => {
+    if (gameID.length) {
+      if (!gameOpen) {
+        console.log("Setting ID to: " + gameID);
+        ctrl.openGame(gameID)
+        setGameOpen(true)
+      }
+      const interval = setInterval(() => {
+        if (ctrl.game?.lastMove !== move) {
+          setMove(ctrl.game?.lastMove);
+          console.log("Move changed to: " + ctrl.game?.lastMove);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [ctrl.game, ctrl, ctrl.game?.lastMove, move, gameID])
+
   if (ongoing.games.length) {
     return (
       <ListGroup>
         {ongoing.games.map(item => (
-          <ListGroup.Item key={item.id} className="modal-bg">{GameWidget(item)}</ListGroup.Item>
+          <ListGroup.Item key={item.id} className="modal-bg">{GameWidget(item, setGameId)}</ListGroup.Item>
         ))}
       </ListGroup>
 
@@ -66,4 +66,4 @@ function renderGames(ongoing: OngoingGames) {
     return <> <p>No ongoing games at the moment</p></>;
   }
 }
-export default renderGames;
+export default GameList;
