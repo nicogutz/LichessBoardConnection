@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const characteristic = true;
 
-export const BluetoothButton = () => {
+export const BluetoothButton = ({magnet}) => {
   const [logMessage, setLogMessage] = useState('');
   const [moveValue, setMoveValue] = useState('');
   const [bluetoothCharacteristic, setBluetoothCharacteristic] = useState(null);
