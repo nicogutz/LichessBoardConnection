@@ -44,7 +44,7 @@ export class Ctrl {
     this.game = await GameCtrl.open(this, id);
   };
 
-  playAi = async (level: number, clockLimit: number, clockIncrement: number, color: string) => {
+  playAi = async (level: number, clockLimit: number, clockIncrement: number) => {
     this.game = undefined;
     this.page = 'game';
   
