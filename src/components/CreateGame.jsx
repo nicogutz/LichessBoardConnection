@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { getCtrl } from "../lichess/ctrl";
+import { useNavigate } from "react-router-dom";
 
 export const CreateGame = ({ setGameId }) => {
   const ctrl = getCtrl();
+  const navigate = useNavigate();
 
   const [gameConfig, setGameConfig] = useState({
     level: 1,
@@ -20,7 +22,8 @@ export const CreateGame = ({ setGameId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    ctrl.playAi(gameConfig.clock_increment.level, gameConfig.clock_limit, gameConfig.clock_increment, gameConfig.color)
+    ctrl.playAi(gameConfig.clock_increment.level, gameConfig.clock_limit, gameConfig.clock_increment, gameConfig.color);
+    navigate("/LichessBoardConnection");
   }
 
 
