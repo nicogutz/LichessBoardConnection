@@ -4,6 +4,7 @@
   "homepage": "https://nicogutz.github.io/LichessBoardConnection",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@bity/oauth2-auth-code-pkce": "^2",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.91",

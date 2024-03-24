@@ -8,13 +8,22 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './pages/Landing';
+import Play from './pages/Play';
 
 const router = createBrowserRouter([
   {
-    path: "/LichessBoardConnection",
-    element: <Landing />,
+    path: "LichessBoardConnection",
+    children: [
+      {
+        path: "",
+        element: <Landing /> ,
+      },
+      {
+        path: "play",
+        element: <Play />
+      }
+    ]
   },
-
 ]);
 ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement).render(

@@ -15,16 +15,15 @@ function Play() {
     const [magnet] = useState(new Magnet())
     const title = 'Dashboard';
 
-    if (ctrl.auth.me) {
-        return (
-            <>
-                {!gameId && <CreateGame setGameId={setGameId} />}
-                {gameId && <StreamGame setIsUsersTurn={setIsUsersTurn} gameId={gameId} magnet={magnet} />}
-                {gameId && <MakeMove gameId={gameId} isUsersTurn={isUsersTurn} />}
-                <BluetoothButton magnet={magnet} />
-            </>
-        )
-    }
+    return (
+        <>
+
+            {!gameId && <CreateGame setGameId={setGameId} />}
+            {gameId && <StreamGame setIsUsersTurn={setIsUsersTurn} gameId={gameId} magnet={magnet} />}
+            {gameId && <MakeMove gameId={gameId} isUsersTurn={isUsersTurn} />}
+            <BluetoothButton magnet={magnet} />
+        </>
+    )
 }
 
 export default Play;
