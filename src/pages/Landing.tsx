@@ -10,23 +10,17 @@ function Landing() {
     let query = useQuery();
     const ctrl = getCtrl()
     const navigate = useNavigate();
-    const [redirectToPlay, setRedirectToPlay] = useState(false);
 
-    useEffect(() => {
-        ctrl.auth.init().then(() => {
-            if (ctrl.auth.me) {
-                setRedirectToPlay(true);
-            }
-        });
-    }, [ctrl.auth]);
+    ctrl.auth.init().then(() => {
+        if (ctrl.auth.me) {
+            navigate("play");
+        } else{
+            if (query.get("code")?.includes("liu_")) {
+                window.history.pushState({}, '', process.env.PUBLIC_URL || '/');
+            }        
+        }
+    })
 
-    if(query.get("code")?.includes("liu_")){
-        window.history.pushState({}, '', process.env.PUBLIC_URL || '/');
-    }
-
-    if (redirectToPlay) {
-        navigate("LichessBoardConnection/play");
-    }
 
     return (
         <>
