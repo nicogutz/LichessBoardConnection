@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Landing from './pages/Landing';
+
+const router = createBrowserRouter([
+  {
+    path: "/LichessBoardConnection",
+    element: <Landing />,
+  },
+
+]);
+ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  );

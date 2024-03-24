@@ -25,10 +25,6 @@ export class Auth {
     onInvalidGrant: console.warn,
   });
   me?: Me;
-  constructor() {
-    console.log(`Client: ${clientUrl}`)
-    console.log(this.oauth)
-  }
   async init() {
     try {
       const accessContext = await this.oauth.getAccessToken();
