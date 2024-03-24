@@ -53,7 +53,6 @@ export class Ctrl {
       level: level,
       'clock.limit': clockLimit,
       'clock.increment': clockIncrement,
-      color: color,
     };
   
     // Fetch request with formData in the body

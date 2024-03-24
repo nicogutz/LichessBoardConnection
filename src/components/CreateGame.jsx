@@ -22,7 +22,7 @@ export const CreateGame = ({ setGameId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    ctrl.playAi(gameConfig.clock_increment.level, gameConfig.clock_limit, gameConfig.clock_increment, gameConfig.color);
+    ctrl.playAi(gameConfig.clock_increment.level, gameConfig.clock_limit, gameConfig.clock_increment);
     navigate("/LichessBoardConnection");
   }
 
