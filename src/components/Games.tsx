@@ -31,7 +31,7 @@ function GameWidget(game: Game, setGameId: React.Dispatch<React.SetStateAction<s
   );
 };
 
-function GameList(ongoing: OngoingGames) {
+function GameList(ongoing: OngoingGames, bluetoothCharacteristic: any) {
   const [gameOpen, setGameOpen] = useState(false);
   const [gameID, setGameId] = useState("");
   const [move, setMove] = useState<[Key, Key]>();
@@ -47,9 +47,15 @@ function GameList(ongoing: OngoingGames) {
       const interval = setInterval(() => {
         if (ctrl.game?.lastMove !== move) {
           setMove(ctrl.game?.lastMove);
+          
           console.log("Move changed to: " + `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
+          magnet.setBluetooth(bluetoothCharacteristic);
           magnet.makeMove( `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
           console.log("Magnet: " + magnet.instructions)
+          let encoder = new TextEncoder()
+          console.log("Magnet Bluetooth" + bluetoothCharacteristic)
+          bluetoothCharacteristic.writeValue(encoder.encode(magnet.instructions.toString()))
+          magnet.resetInstructions()
         }
       }, 100);
       return () => clearInterval(interval);

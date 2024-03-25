@@ -19,6 +19,8 @@ function Play() {
     const [newGame, setNewGame] = useState(false);
     const [isUsersTurn, setIsUsersTurn] = useState(false);
     const [magnet] = useState(new Magnet());
+    const [characteristic, setCharacteristic] = useState(null);
+    const [bluetoothCharacteristicReceived, setBluetoothCharacteristicReceived] = useState(false);
     const title = 'Dashboard';
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -36,6 +38,11 @@ function Play() {
         }, 1000);
         return () => clearTimeout(timeout);
     }, [newGame, ctrl.games])
+    const handleBluetoothCharacteristic = (characteristic: any) => {
+        console.log("is callback ok" + characteristic);
+        setCharacteristic(characteristic);
+        magnet.setBluetooth(characteristic);
+    };
     return (
         <>
             <main className="container-fluid">
@@ -44,10 +51,10 @@ function Play() {
                     <h1 className="display-5 fw-bold">{"Wizzard Chess"}</h1>
                     <div className="col-lg-6 mx-auto">
                         {!gameId && <CreateGame setGameId={setGameId} setNewGame={setNewGame} />}
-                        {gameId && <StreamGame setIsUsersTurn={setIsUsersTurn} gameId={gameId} magnet={magnet} />}
+                        {/* {gameId && <StreamGame setIsUsersTurn={setIsUsersTurn} gameId={gameId} magnet={magnet} />} */}
                         {gameId && <MakeMove gameId={gameId} isUsersTurn={isUsersTurn} />}
-                        <div> {GameList(games)}</div>
-                        <BluetoothButton magnet={magnet} />
+                        <div> {GameList(games, characteristic)}</div>
+                        <BluetoothButton onCharacteristicReceived={handleBluetoothCharacteristic} />
                     </div>
                 </div>
             </main>

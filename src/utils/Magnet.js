@@ -36,7 +36,7 @@ export class Magnet {
   }
 
   resetInstructions() {
-    this._instructions = ['MG0']
+    this._instructions = ['']
   }
 
   makeMove(notation) {
@@ -72,21 +72,21 @@ export class Magnet {
             : dx < 0 && dy > 0
               ? DIRECTIONS.NW
               : DIRECTIONS.SW
-      this._instructions.push(`${direction} ${Math.abs(dx)}`)
+      this._instructions.push(`${direction}${Math.abs(dx)*2}`)
     } else {
       if (dx !== 0) {
         const direction = dx > 0 ? DIRECTIONS.E : DIRECTIONS.W
-        this._instructions.push(`${direction} ${Math.abs(dx)}`)
+        this._instructions.push(`${direction}${Math.abs(dx)*2}`)
       } else {
         const direction = dy > 0 ? DIRECTIONS.N : DIRECTIONS.S
-        this._instructions.push(`${direction} ${Math.abs(dy)}`)
+        this._instructions.push(`${direction}${Math.abs(dy)*2}`)
       }
     }
 
     this.turnOff()
-
     this._position.x = to.x
     this._position.y = to.y
+    this.goHome()
   }
 
   moveKnight(from, to) {
@@ -124,6 +124,7 @@ export class Magnet {
 
     this._position.x = to.x
     this._position.y = to.y
+    this.goHome()
   }
 
   castle(notation) {
@@ -248,7 +249,13 @@ export class Magnet {
       y: 0,
     }
   }
+
+  setBluetooth(characteristic){
+    this._characteristic = characteristic
+    console.log("setting bluetooth" + this._characteristic)
+  }
 }
+
 let instance = null;
 export function getMagnet() {
   if (!instance) instance = new Magnet();
