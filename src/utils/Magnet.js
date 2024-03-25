@@ -36,7 +36,7 @@ export class Magnet {
   }
 
   resetInstructions() {
-    this._instructions = ['']
+    this._instructions = []
   }
 
   makeMove(notation) {
@@ -72,21 +72,20 @@ export class Magnet {
             : dx < 0 && dy > 0
               ? DIRECTIONS.NW
               : DIRECTIONS.SW
-      this._instructions.push(`${direction}${Math.abs(dx)*2}`)
+      this._instructions.push(`${direction}${Math.abs(dx) * 2}`)
     } else {
       if (dx !== 0) {
         const direction = dx > 0 ? DIRECTIONS.E : DIRECTIONS.W
-        this._instructions.push(`${direction}${Math.abs(dx)*2}`)
+        this._instructions.push(`${direction}${Math.abs(dx) * 2}`)
       } else {
         const direction = dy > 0 ? DIRECTIONS.N : DIRECTIONS.S
-        this._instructions.push(`${direction}${Math.abs(dy)*2}`)
+        this._instructions.push(`${direction}${Math.abs(dy) * 2}`)
       }
     }
 
     this.turnOff()
     this._position.x = to.x
     this._position.y = to.y
-    this.goHome()
   }
 
   moveKnight(from, to) {
@@ -105,7 +104,18 @@ export class Magnet {
             ? DIRECTIONS.NW
             : DIRECTIONS.SW
 
-    this._instructions.push(`${offsetDirection}1`)
+    let offsetCommand = '';
+
+    if (offsetDirection === DIRECTIONS.NE) {
+      offsetCommand = `${DIRECTIONS.E}1,${DIRECTIONS.N}1`
+    } else if (offsetDirection === DIRECTIONS.SE) {
+      offsetCommand = `${DIRECTIONS.E}1,${DIRECTIONS.S}1`
+    } else if (offsetDirection === DIRECTIONS.NW) {
+      offsetCommand = `${DIRECTIONS.W}1,${DIRECTIONS.N}1`
+    } else {
+      offsetCommand = `${DIRECTIONS.W}1,${DIRECTIONS.S}1`
+    }
+    this._instructions.push(`${offsetCommand}`)
 
     dx = dx > 0 ? dx - 0.5 : dx + 0.5
     dy = dy > 0 ? dy - 0.5 : dy + 0.5
@@ -118,13 +128,23 @@ export class Magnet {
     } else {
       this._instructions.push(`${directionX}2`)
     }
-    this._instructions.push(`${offsetDirection}1`)
+
+    if (offsetDirection === DIRECTIONS.NE) {
+      offsetCommand = `${DIRECTIONS.N}1,${DIRECTIONS.E}1`
+    } else if (offsetDirection === DIRECTIONS.SE) {
+      offsetCommand = `${DIRECTIONS.S}1,${DIRECTIONS.E}1`
+    } else if (offsetDirection === DIRECTIONS.NW) {
+      offsetCommand = `${DIRECTIONS.N}1,${DIRECTIONS.W}1`
+    } else {
+      offsetCommand = `${DIRECTIONS.S}1,${DIRECTIONS.W}1`
+    }
+
+    this._instructions.push(`${offsetCommand}`)
 
     this.turnOff()
 
     this._position.x = to.x
     this._position.y = to.y
-    this.goHome()
   }
 
   castle(notation) {
@@ -188,7 +208,7 @@ export class Magnet {
     let dx = targetPosition.x - position.x
     let dy = targetPosition.y - position.y
 
-    const offsetDirection =
+    let offsetDirection =
       dx > 0 && dy > 0
         ? DIRECTIONS.NE
         : dx > 0 && dy < 0
@@ -197,7 +217,16 @@ export class Magnet {
             ? DIRECTIONS.NW
             : DIRECTIONS.SW
 
-    this._instructions.push(`${offsetDirection}1`)
+    if (offsetDirection === DIRECTIONS.NE) {
+      offsetDirection = `${DIRECTIONS.E}1,${DIRECTIONS.E}1`
+    } else if (offsetDirection === DIRECTIONS.SE) {
+      offsetDirection = `${DIRECTIONS.E}1,${DIRECTIONS.S}1`
+    } else if (offsetDirection === DIRECTIONS.NW) {
+      offsetDirection = `${DIRECTIONS.W}1,${DIRECTIONS.N}1`
+    } else {
+      offsetDirection = `${DIRECTIONS.W}1,${DIRECTIONS.S}1`
+    }
+    this._instructions.push(`${offsetDirection}`)
 
     dx = dx > 0 ? dx - 0.5 : dx + 0.5
     dy = dy > 0 ? dy - 0.5 : dy + 0.5
@@ -205,8 +234,13 @@ export class Magnet {
     const directionX = dx > 0 ? DIRECTIONS.E : DIRECTIONS.W
     const directionY = dy > 0 ? DIRECTIONS.N : DIRECTIONS.S
 
-    this._instructions.push(`${directionX}${Math.abs(dx)*2}`)
-    this._instructions.push(`${directionY}${Math.abs(dy)*2}`)
+    if (dx) {
+      this._instructions.push(`${directionX}${Math.abs(dx) * 2}`)
+    }
+
+    if (dy) {
+      this._instructions.push(`${directionY}${Math.abs(dy) * 2}`)
+    }
 
     this._position.x = targetPosition.x
     this._position.y = targetPosition.y
@@ -219,9 +253,13 @@ export class Magnet {
 
     const directionX = dx > 0 ? DIRECTIONS.E : DIRECTIONS.W
     const directionY = dy > 0 ? DIRECTIONS.N : DIRECTIONS.S
+    if (dx) {
+      this._instructions.push(`${directionX}${Math.abs(dx) * 2}`)
+    }
 
-    this._instructions.push(`${directionX}${Math.abs(dx)*2}`)
-    this._instructions.push(`${directionY}${Math.abs(dy)*2}`)
+    if (dy) {
+      this._instructions.push(`${directionY}${Math.abs(dy) * 2}`)
+    }
 
     this._position.x = position.x
     this._position.y = position.y
@@ -248,11 +286,6 @@ export class Magnet {
       x: 0,
       y: 0,
     }
-  }
-
-  setBluetooth(characteristic){
-    this._characteristic = characteristic
-    console.log("setting bluetooth" + this._characteristic)
   }
 }
 

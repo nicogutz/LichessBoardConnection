@@ -41,7 +41,6 @@ function Play() {
     const handleBluetoothCharacteristic = (characteristic: any) => {
         console.log("is callback ok" + characteristic);
         setCharacteristic(characteristic);
-        magnet.setBluetooth(characteristic);
     };
     return (
         <>
