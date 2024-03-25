@@ -49,7 +49,6 @@ export class Magnet {
     const to = Magnet.convertChessNotationToXY(toRaw)
     const piece = this._chess.get(fromRaw)
     const move = this._chess.move({ from: fromRaw, to: toRaw })
-
     if (move.captured) {
       this.removePiece(to)
     }
@@ -249,4 +248,9 @@ export class Magnet {
       y: 0,
     }
   }
+}
+let instance = null;
+export function getMagnet() {
+  if (!instance) instance = new Magnet();
+  return instance;
 }

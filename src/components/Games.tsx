@@ -5,6 +5,7 @@ import OngoingGames from '../lichess/ongoingGames';
 import { getCtrl } from '../lichess/ctrl';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Key } from 'chessground/types';
+import { Magnet, getMagnet } from '../utils/Magnet';
 
 function GameWidget(game: Game, setGameId: React.Dispatch<React.SetStateAction<string>>) {
   return (
@@ -35,7 +36,7 @@ function GameList(ongoing: OngoingGames) {
   const [gameID, setGameId] = useState("");
   const [move, setMove] = useState<[Key, Key]>();
   const ctrl = getCtrl();
-
+  const magnet: Magnet = getMagnet();
   useEffect(() => {
     if (gameID.length) {
       if (!gameOpen) {
@@ -46,7 +47,9 @@ function GameList(ongoing: OngoingGames) {
       const interval = setInterval(() => {
         if (ctrl.game?.lastMove !== move) {
           setMove(ctrl.game?.lastMove);
-          console.log("Move changed to: " + ctrl.game?.lastMove);
+          console.log("Move changed to: " + `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
+          magnet.makeMove( `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
+          console.log("Magnet: " + magnet.instructions)
         }
       }, 100);
       return () => clearInterval(interval);
