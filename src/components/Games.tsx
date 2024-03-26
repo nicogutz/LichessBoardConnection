@@ -47,18 +47,18 @@ function GameList(ongoing: OngoingGames, bluetoothCharacteristic: any) {
       const interval = setInterval(() => {
         if (ctrl.game?.lastMove !== move) {
           setMove(ctrl.game?.lastMove);
-          
+
           console.log("Move changed to: " + `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
-          magnet.makeMove( `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
+          magnet.makeMove(`${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
           magnet.goHome();
           console.log("Magnet: " + magnet.instructions)
-          
-          if(bluetoothCharacteristic){
+          console.log("Time: " + ctrl.game?.timeOf(ctrl.game.pov).toString(16) + ", " + ctrl.game?.timeOf(ctrl.game.pov == "black" ? "white" : "black").toString(16));
+          if (bluetoothCharacteristic) {
             let encoder = new TextEncoder()
             console.log("Magnet Bluetooth" + bluetoothCharacteristic)
             bluetoothCharacteristic.writeValue(encoder.encode(magnet.instructions.toString()))
           }
-          magnet.resetInstructions()  
+          magnet.resetInstructions()
         }
       }, 100);
       return () => clearInterval(interval);

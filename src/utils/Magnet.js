@@ -40,15 +40,16 @@ export class Magnet {
   }
 
   makeMove(notation) {
-    if (notation === "O-O" || notation === "O-O-O") {
-      return this.castle(notation);
-    }
     const fromRaw = `${notation[0]}${notation[1]}`;
     const toRaw = `${notation[2]}${notation[3]}`;
     const from = Magnet.convertChessNotationToXY(fromRaw);
     const to = Magnet.convertChessNotationToXY(toRaw);
     const piece = this._chess.get(fromRaw);
     const move = this._chess.move({ from: fromRaw, to: toRaw });
+    console.log(move);
+    if (move.san === "O-O" || move.san === "O-O-O") {
+      return this.castle(move.san);
+    }
     if (move.captured) {
       this.removePiece(to);
     }
@@ -149,7 +150,6 @@ export class Magnet {
 
   castle(notation) {
     const color = this._chess.turn();
-    this._chess.move(notation);
     const whiteRookPos = notation === "O-O" ? { x: 7, y: 0 } : { x: 0, y: 0 };
     const blackRookPos = notation === "O-O" ? { x: 7, y: 7 } : { x: 0, y: 7 };
 
