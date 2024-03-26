@@ -54,12 +54,14 @@ function GameList(ongoing: OngoingGames, bluetoothCharacteristic: any) {
           const localTime = ctrl.game?.timeOf(ctrl.game.pov);
           const remoteTime = ctrl.game?.timeOf(ctrl.game.pov == "black" ? "white" : "black");
           const player = ctrl.game?.chess.turn === ctrl.game?.pov ? 0 : 1;
-          console.log(remoteTime);
           
-          const timeCommand = `TM${player} ${localTime.toString(16).padStart(8, '0')} ${remoteTime.toString(16).padStart(8, '0')},`
+          const timeCommand = `TM${player} ${localTime.toString(16).padStart(8, '0')} ${remoteTime.toString(16).padStart(8, '0')}`
+          console.log(timeCommand);
+          console.log(magnet.instructions.toString());
+          
           if (bluetoothCharacteristic) {
             let encoder = new TextEncoder()
-            bluetoothCharacteristic.writeValue(encoder.encode(timeCommand + magnet.instructions.toString()))
+            bluetoothCharacteristic.writeValue(encoder.encode(`${timeCommand},${magnet.instructions.toString()}`))
           }
           magnet.resetInstructions()
         }

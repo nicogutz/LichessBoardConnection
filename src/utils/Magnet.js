@@ -161,7 +161,7 @@ export class Magnet {
         );
         // move to king
         this.turnOff();
-        this._instructions.push(`${DIRECTIONS.W}1`);
+        this._instructions.push(`${DIRECTIONS.W}2`);
         // move king
         this.turnOn();
         this._instructions.push(
@@ -175,7 +175,7 @@ export class Magnet {
         );
         // move to king
         this.turnOff();
-        this._instructions.push(`${DIRECTIONS.E}1`);
+        this._instructions.push(`${DIRECTIONS.E}2`);
         // move king
         this.turnOn();
         this._instructions.push(
@@ -193,7 +193,7 @@ export class Magnet {
         );
         // move to king
         this.turnOff();
-        this._instructions.push(`${DIRECTIONS.W}1`);
+        this._instructions.push(`${DIRECTIONS.W}2`);
         // move king
         this.turnOn();
         this._instructions.push(
@@ -207,7 +207,7 @@ export class Magnet {
         );
         // move to king
         this.turnOff();
-        this._instructions.push(`${DIRECTIONS.E}1`);
+        this._instructions.push(`${DIRECTIONS.E}2`);
         // move king
         this.turnOn();
         this._instructions.push(
