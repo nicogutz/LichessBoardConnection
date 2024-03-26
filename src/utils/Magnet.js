@@ -203,7 +203,7 @@ export class Magnet {
   removePiece(position) {
     this.moveTo(position)
     this.turnOn()
-    const targetPosition = { x: 3.5, y: 3.5 }
+    const targetPosition = { x: 7, y: 3.5 }
 
     let dx = targetPosition.x - position.x
     let dy = targetPosition.y - position.y
@@ -218,7 +218,7 @@ export class Magnet {
             : DIRECTIONS.SW
 
     if (offsetDirection === DIRECTIONS.NE) {
-      offsetDirection = `${DIRECTIONS.E}1,${DIRECTIONS.E}1`
+      offsetDirection = `${DIRECTIONS.E}1,${DIRECTIONS.N}1`
     } else if (offsetDirection === DIRECTIONS.SE) {
       offsetDirection = `${DIRECTIONS.E}1,${DIRECTIONS.S}1`
     } else if (offsetDirection === DIRECTIONS.NW) {
@@ -227,12 +227,14 @@ export class Magnet {
       offsetDirection = `${DIRECTIONS.W}1,${DIRECTIONS.S}1`
     }
     this._instructions.push(`${offsetDirection}`)
-
+    // MVEA6,MVNO8,MG1,MVEA1,MVSO1,MG0,MVWE3,MVSO1,MG1,MNNE2,MG0,HM
     dx = dx > 0 ? dx - 0.5 : dx + 0.5
     dy = dy > 0 ? dy - 0.5 : dy + 0.5
 
     const directionX = dx > 0 ? DIRECTIONS.E : DIRECTIONS.W
     const directionY = dy > 0 ? DIRECTIONS.N : DIRECTIONS.S
+    console.log(dx);
+    console.log(dy);
 
     if (dx) {
       this._instructions.push(`${directionX}${Math.abs(dx) * 2}`)
