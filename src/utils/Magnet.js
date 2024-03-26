@@ -6,9 +6,9 @@ const DIRECTIONS = {
   W: 'MVWE',
   E: 'MVEA',
   NW: 'MVNW',
-  NE: 'MNNE',
-  SW: 'MNSW',
-  SE: 'MNSE',
+  NE: 'MVNE',
+  SW: 'MVSW',
+  SE: 'MVSE',
 }
 
 export class Magnet {
