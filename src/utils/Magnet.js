@@ -45,7 +45,7 @@ export class Magnet {
     const to = Magnet.convertChessNotationToXY(toRaw);
     const piece = this._chess.get(fromRaw);
     const move = this._chess.move({ from: fromRaw, to: toRaw });
-    console.log(move);
+
     if (move.san === "O-O" || move.san === "O-O-O") {
       return this.castle(move.san);
     }
@@ -151,10 +151,9 @@ export class Magnet {
     const color = this._chess.turn();
     const whiteRookPos = notation === "O-O" ? { x: 7, y: 0 } : { x: 0, y: 0 };
     const blackRookPos = notation === "O-O" ? { x: 7, y: 7 } : { x: 0, y: 7 };
-
-    this.turnOn();
-    if (color === "w") {
+    if (color === "b") {
       this.moveTo(whiteRookPos);
+      this.turnOn();
       if (notation === "O-O") {
         // move rook
         this._instructions.push(
@@ -186,6 +185,7 @@ export class Magnet {
       }
     } else {
       this.moveTo(blackRookPos);
+      this.turnOn();
       if (notation === "O-O") {
         // move rook
         this._instructions.push(
