@@ -165,7 +165,7 @@ export class Magnet {
         // move king
         this.turnOn();
         this._instructions.push(
-          `${DIRECTIONS.N}1,${DIRECTIONS.W}4,${DIRECTIONS.S}1`
+          `${DIRECTIONS.N}1,${DIRECTIONS.E}4,${DIRECTIONS.S}1`
         );
         this.turnOff();
       } else {
@@ -179,7 +179,7 @@ export class Magnet {
         // move king
         this.turnOn();
         this._instructions.push(
-          `${DIRECTIONS.N}1,${DIRECTIONS.E}4,${DIRECTIONS.S}1`
+          `${DIRECTIONS.N}1,${DIRECTIONS.W}4,${DIRECTIONS.S}1`
         );
         this.turnOff();
       }
