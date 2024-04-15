@@ -49,21 +49,26 @@ function GameList(ongoing: OngoingGames, bluetoothCharacteristic: any) {
           setMove(ctrl.game?.lastMove);
 
           console.log("Move changed to: " + `${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
-          magnet.makeMove(`${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
-          magnet.goHome();
-          const localTime = ctrl.game?.timeOf(ctrl.game.pov);
-          const remoteTime = ctrl.game?.timeOf(ctrl.game.pov == "black" ? "white" : "black");
-          const player = ctrl.game?.chess.turn === ctrl.game?.pov ? 0 : 1;
-          
-          const timeCommand = `TM${player} ${localTime.toString(16).padStart(8, '0')} ${remoteTime.toString(16).padStart(8, '0')}`
-          console.log(timeCommand);
-          console.log(magnet.instructions.toString());
-          
-          if (bluetoothCharacteristic) {
-            let encoder = new TextEncoder()
-            bluetoothCharacteristic.writeValue(encoder.encode(`${timeCommand},${magnet.instructions.toString()}`))
+          try {
+            magnet.makeMove(`${ctrl.game?.lastMove![0]}${ctrl.game?.lastMove![1]}`);
+            magnet.goHome();
+            const localTime = ctrl.game?.timeOf(ctrl.game.pov);
+            const remoteTime = ctrl.game?.timeOf(ctrl.game.pov == "black" ? "white" : "black");
+            const player = ctrl.game?.chess.turn === ctrl.game?.pov ? 0 : 1;
+            
+            const timeCommand = `TM${player} ${localTime.toString(16).padStart(8, '0')} ${remoteTime.toString(16).padStart(8, '0')}`
+            console.log(timeCommand);
+            console.log(magnet.instructions.toString());
+            
+            if (bluetoothCharacteristic) {
+              let encoder = new TextEncoder()
+              bluetoothCharacteristic.writeValue(encoder.encode(`${timeCommand},${magnet.instructions.toString()}`))
+            }
+            magnet.resetInstructions()
+  
+          } catch (error) {
+            console.log(error);
           }
-          magnet.resetInstructions()
         }
       }, 100);
       return () => clearInterval(interval);
