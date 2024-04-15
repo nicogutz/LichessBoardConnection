@@ -157,7 +157,7 @@ export class Magnet {
       if (notation === "O-O") {
         // move rook
         this._instructions.push(
-          `${DIRECTIONS.N}1,${DIRECTIONS.W}4,${DIRECTIONS.S}1`
+          `${DIRECTIONS.W}4`
         );
         // move to king
         this.turnOff();
@@ -171,7 +171,7 @@ export class Magnet {
       } else {
         // move rook
         this._instructions.push(
-          `${DIRECTIONS.N}1,${DIRECTIONS.E}6,${DIRECTIONS.S}1`
+          `${DIRECTIONS.E}6`
         );
         // move to king
         this.turnOff();
@@ -189,7 +189,7 @@ export class Magnet {
       if (notation === "O-O") {
         // move rook
         this._instructions.push(
-          `${DIRECTIONS.S}1,${DIRECTIONS.W}4,${DIRECTIONS.N}1`
+          `${DIRECTIONS.W}4`
         );
         // move to king
         this.turnOff();
@@ -203,7 +203,7 @@ export class Magnet {
       } else {
         // move rook
         this._instructions.push(
-          `${DIRECTIONS.S}1,${DIRECTIONS.E}6,${DIRECTIONS.N}1`
+          `${DIRECTIONS.E}6`
         );
         // move to king
         this.turnOff();
