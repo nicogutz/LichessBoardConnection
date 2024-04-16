@@ -45,7 +45,6 @@ export class Magnet {
     const to = Magnet.convertChessNotationToXY(toRaw);
     const piece = this._chess.get(fromRaw);
     const move = this._chess.move({ from: fromRaw, to: toRaw });
-    
     if (move.san === "O-O" || move.san === "O-O-O") {
       return this.castle(move.san);
     }
@@ -90,6 +89,9 @@ export class Magnet {
 
   moveKnight(from, to) {
     this.moveTo(from);
+    if (from.x === 6 && from.y === 7) {
+      this._instructions.push(`${DIRECTIONS.N}1`);
+    }
     this.turnOn();
 
     let dx = to.x - from.x;
