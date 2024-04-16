@@ -89,9 +89,6 @@ export class Magnet {
 
   moveKnight(from, to) {
     this.moveTo(from);
-    if (from.x === 6 && from.y === 7) {
-      this._instructions.push(`${DIRECTIONS.N}1`);
-    }
     this.turnOn();
 
     let dx = to.x - from.x;
