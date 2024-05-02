@@ -1,19 +1,28 @@
-import { Button } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-type NavbarProps = {
-    username?: string
-}
+import { Button, Container, Navbar } from 'react-bootstrap';
+import { getCtrl } from '../lichess/ctrl';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-function ChassNavbar(props: NavbarProps) {
+function ChassNavbar() {
+    const ctrl = getCtrl();
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+
+    const onLogout = async () => {
+        setIsLoading(true);
+        await ctrl.auth.logout();
+        navigate("/LichessBoardConnection");
+        setIsLoading(false);
+    }
+
     return (
         <Navbar className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="#home">Wizzard Chess</Navbar.Brand>
+                <Navbar.Brand>Wizzard Chess</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                    {props.username ? <>Signed in as: <a href="#login">{props.username}</a> </> :
-                        <><Button>Login</Button></>}
+                    <Button className="me-4">{ctrl.auth.me ? ctrl.auth.me.username : "Login"}</Button>
+                    {ctrl.auth.me && <Button disabled={isLoading} onClick={!isLoading ? onLogout : undefined}>Logout</Button>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>

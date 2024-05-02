@@ -6,6 +6,9 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@bity/oauth2-auth-code-pkce": "^2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.91",
     "@types/react": "^18.2.69",
