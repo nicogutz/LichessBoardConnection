@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { getCtrl } from "../lichess/ctrl";
-import { useNavigate } from "react-router-dom";
+import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 
 export const CreateGame = ({ setGameId, setNewGame }) => {
   const ctrl = getCtrl();
-  const navigate = useNavigate();
 
   const [gameConfig, setGameConfig] = useState({
     level: 1,
     clock_limit: 300,
     clock_increment: 0,
-    color: 'black',
+    color: 'random',
   })
 
   const handleChange = (e) => {
@@ -25,50 +24,81 @@ export const CreateGame = ({ setGameId, setNewGame }) => {
     ctrl.playAi(
       gameConfig.level,
       gameConfig.clock_limit,
-      gameConfig.clock_increment, 
+      gameConfig.clock_increment,
       gameConfig.color);
       setNewGame(true);
   }
-  
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create a Game</h2>
-      <div>
-        <label>Level:</label>
-        <input
-          type="number"
-          name="level"
-          value={gameConfig.level}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Clock Limit (in seconds):</label>
-        <input
-          type="number"
-          name="clock_limit"
-          value={gameConfig.clock_limit}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Clock Increment (in seconds):</label>
-        <input
-          type="number"
-          name="clock_increment"
-          value={gameConfig.clock_increment}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Color:</label>
-        <select name="color" value={gameConfig.color} onChange={handleChange}>
-          <option value="black">Black</option>
-          <option value="white">White</option>
-          <option value="random">Random</option>
-        </select>
-      </div>
-      <button type="submit">Create Game</button>
-    </form>
+    <Container>
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <Form onSubmit={handleSubmit}>
+            <h4>Create a Game</h4>
+
+            <Form.Group as={Row} className="mb-3">
+              <Col>
+                <Form.Label htmlFor="level">Level</Form.Label>
+                <Form.Control
+                  type="number"
+                  id="level"
+                  name="level"
+                  value={gameConfig.level}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Col>
+                <Form.Label htmlFor="clock_limit">Clock Limit (in seconds)</Form.Label>
+                <Form.Control
+                  type="number"
+                  id="clock_limit"
+                  name="clock_limit"
+                  value={gameConfig.clock_limit}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Col>
+                <Form.Label htmlFor="clock_increment">Clock Increment (in seconds)</Form.Label>
+                <Form.Control
+                  type="number"
+                  id="clock_increment"
+                  name="clock_increment"
+                  value={gameConfig.clock_increment}
+                  onChange={handleChange}
+                />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3">
+              <Col>
+                <Form.Label htmlFor="color">Color</Form.Label>
+                <Form.Control
+                  as="select"
+                  id="color"
+                  name="color"
+                  value={gameConfig.color}
+                  onChange={handleChange}
+                  custom
+                >
+                  <option value="random">Random</option>
+                  <option value="white">White</option>
+                  <option value="black">Black</option>
+                </Form.Control>
+              </Col>
+            </Form.Group>
+
+            <Button type="submit" variant="primary">
+              Create Game
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   )
 }
