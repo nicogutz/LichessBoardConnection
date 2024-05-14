@@ -25,6 +25,10 @@ export class Magnet {
     return this._position;
   }
 
+  reinitFen(fen) {
+    this._chess = new Chess(fen);
+  }
+
   set position(pos) {
     this._position.x = pos.x;
     this._position.y = pos.y;
@@ -220,7 +224,7 @@ export class Magnet {
   removePiece(position) {
     this.moveTo(position);
     this.turnOn();
-    const targetPosition = { x: 7, y: 3.5 };
+    const targetPosition = position.x < 3.5 ? { x: 0, y: 3.5 } : { x: 7, y: 3.5 };
 
     let dx = targetPosition.x - position.x;
     let dy = targetPosition.y - position.y;

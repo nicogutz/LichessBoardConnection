@@ -55,7 +55,7 @@ export class Ctrl {
       'clock.increment': clockIncrement,
       color: color
     };
-    
+
     // Fetch request with formData in the body
     await this.auth.fetchBody('/api/challenge/ai', {
       method: 'post',

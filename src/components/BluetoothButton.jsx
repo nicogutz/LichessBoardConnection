@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 export const characteristic = true;
 
-export const BluetoothButton = ({onCharacteristicReceived}) => {
+export const BluetoothButton = ({onCharacteristicReceived, setBTConnected}) => {
   const [logMessage, setLogMessage] = useState('');
   const [moveValue, setMoveValue] = useState('');
   const [bluetoothCharacteristic, setBluetoothCharacteristic] = useState(null);
@@ -10,7 +11,7 @@ export const BluetoothButton = ({onCharacteristicReceived}) => {
   const log = (message) => {
     setLogMessage((prevLog) => prevLog + '\n' + message);
   };
-  
+
   // const handleChange = (event) => {
   //   let change = event.target.value.getUint64();
   //   log('> Characteristics changed:  ' + change);
@@ -59,11 +60,12 @@ export const BluetoothButton = ({onCharacteristicReceived}) => {
       // } catch(error) {
       //   log('Argh! ' + error);
       // }
+      setBTConnected(true);
     } catch (error) {
       log('Argh! ' + error);
     }
   };
-  
+
   // const doMove = async (moveValue) => {
   //   if (!bluetoothCharacteristic) {
   //     log('Bluetooth characteristic not available');
@@ -84,7 +86,7 @@ export const BluetoothButton = ({onCharacteristicReceived}) => {
 
   return (
     <div>
-      <button onClick={requestBluetoothDevice}>Request Bluetooth Device</button>
+      <Button onClick={requestBluetoothDevice}>Request Bluetooth Device</Button>
       <pre>{logMessage}</pre>
       {/* <input type="text" value={moveValue} />
       <button onClick={doMove}>doMove</button> */}

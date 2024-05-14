@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { ChangeEventHandler, Dispatch, FormEventHandler, SetStateAction, useState } from 'react'
 import { getCtrl } from "../lichess/ctrl";
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import { sleep } from '../lichess/util';
 
-export const CreateGame = ({ setGameId, setNewGame }) => {
+type CreateGameProps = {
+  setGameId: Dispatch<SetStateAction<string>>,
+}
+
+export const CreateGame = ({ setGameId }: CreateGameProps) => {
   const ctrl = getCtrl();
 
   const [gameConfig, setGameConfig] = useState({
@@ -12,21 +17,22 @@ export const CreateGame = ({ setGameId, setNewGame }) => {
     color: 'random',
   })
 
-  const handleChange = (e) => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setGameConfig({
       ...gameConfig,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    ctrl.playAi(
-      gameConfig.level,
-      gameConfig.clock_limit,
-      gameConfig.clock_increment,
-      gameConfig.color);
-      setNewGame(true);
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    await ctrl.playAi(gameConfig.level,
+                      gameConfig.clock_limit,
+                      gameConfig.clock_increment,
+                      gameConfig.color
+                      );
+    setGameId(ctrl.games.games[0].gameId);
+    await ctrl.openGame(ctrl.games.games[0].gameId);
   }
 
   return (
@@ -84,7 +90,6 @@ export const CreateGame = ({ setGameId, setNewGame }) => {
                   name="color"
                   value={gameConfig.color}
                   onChange={handleChange}
-                  custom
                 >
                   <option value="random">Random</option>
                   <option value="white">White</option>
