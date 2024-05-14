@@ -11,7 +11,7 @@ function Play() {
     const navigate = useNavigate();
     const [gameId, setGameId] = useState('');
     const [characteristic, setCharacteristic] = useState(null);
-    const [btConnected, setBTConnected] = useState(true);
+    const [btConnected, setBTConnected] = useState(false);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
