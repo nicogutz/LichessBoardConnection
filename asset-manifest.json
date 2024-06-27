@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/LichessBoardConnection/static/css/main.ff02f4b5.css",
-    "main.js": "/LichessBoardConnection/static/js/main.5822ec37.js",
+    "main.js": "/LichessBoardConnection/static/js/main.83bc0cb1.js",
     "index.html": "/LichessBoardConnection/index.html",
     "main.ff02f4b5.css.map": "/LichessBoardConnection/static/css/main.ff02f4b5.css.map",
-    "main.5822ec37.js.map": "/LichessBoardConnection/static/js/main.5822ec37.js.map"
+    "main.83bc0cb1.js.map": "/LichessBoardConnection/static/js/main.83bc0cb1.js.map"
   },
   "entrypoints": [
     "static/css/main.ff02f4b5.css",
-    "static/js/main.5822ec37.js"
+    "static/js/main.83bc0cb1.js"
   ]
 }
