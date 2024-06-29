@@ -83,19 +83,35 @@ export const Game = ({ gameId, setGameId, btCharacteristic }: GameProps) => {
 		}
 
     return (
-        <>
-					{!isOver ? <h5>Ongoing game ID: {gameId}</h5>: <h5>Game over, {winReason !== 'aborted' ? `${winner} is the winner (${winReason})` : 'aborted'}</h5>}
-					<Form action={`https://lichess.org/${gameId}`}>
-						<div className="d-flex justify-content-center">
-							<Button type="submit" variant="primary" className="me-3">
-								Open Game on Lichess
-							</Button>
-							<Button onClick={onResign} variant="danger" className="me-3" disabled={isOver}>
-								Resign
-							</Button>
-							{isOver && <Button onClick={onCreateNewGame}>Create new game</Button>}
-						</div>
-					</Form>
-        </>
-    )
+      <>
+        {!isOver ? (
+          <h5>Ongoing game ID: {gameId}</h5>
+        ) : (
+          <h5>
+            Game over,{" "}
+            {winReason !== "aborted"
+              ? `${winner} is the winner (${winReason})`
+              : "aborted"}
+          </h5>
+        )}
+        <Form action={`https://lichess.org/${gameId}`} target="_blank">
+          <div className="d-flex justify-content-center">
+            <Button type="submit" variant="primary" className="me-3">
+              Open Game on Lichess
+            </Button>
+            <Button
+              onClick={onResign}
+              variant="danger"
+              className="me-3"
+              disabled={isOver}
+            >
+              Resign
+            </Button>
+            {isOver && (
+              <Button onClick={onCreateNewGame}>Create new game</Button>
+            )}
+          </div>
+        </Form>
+      </>
+    );
 };
